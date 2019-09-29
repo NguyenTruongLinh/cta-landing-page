@@ -59,6 +59,12 @@ header{
 
   .footer__contact-links{
     padding-bottom: 3rem;
+
+    p {
+      a{
+        color: $white;
+      }
+    }
   }
 
   .copyright{
@@ -95,7 +101,14 @@ header{
 
   .text-wrapper{
     position: relative;
-    max-width: 32rem;
+
+    br{
+      display: none;
+    }
+
+    p{
+      max-width: 32rem;
+    }
   }
 
   .overlay{
@@ -130,6 +143,10 @@ header{
       max-width: 430px;
       margin: 0 auto;
       text-align: center;
+
+      br{
+        display: block;
+      }
     }
 
     .message{
@@ -185,7 +202,7 @@ header{
 
     .products-feature__card-image{
       img{
-        width: 100%;
+        width: unset;
         height: 150px;
       }
     }
@@ -243,8 +260,15 @@ header{
   }
 
   .community-board_body-image{
+    height: 165px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: $white;
+
     img{
-      width: 100%;
+      border-radius: 12px;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
