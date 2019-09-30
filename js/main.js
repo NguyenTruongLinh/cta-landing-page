@@ -35,16 +35,16 @@ $(document).ready(function () {
     $('#form-main').on('submit', function(event) {
         event.preventDefault(); // prevent reload
 
-        var first_name = $('#first_name').val();
-        var last_name = $('#last_name').val();
-        var phone = $('#phone').val();
-        var email = $('#email').val();
-        var message = $('#message').val();
+        var first_name = $('#first_name');
+        var last_name = $('#last_name');
+        var phone = $('#phone');
+        var email = $('#email');
+        var message = $('#message');
 
         var template_params = {
-            "from_name": `${last_name} ${first_name}`,
+            "from_name": `${last_name.val()} ${first_name.val()}`,
             "to_name": "Linh",
-            "message_html": `<p>Phone: ${phone}</p><p>Email: ${email}</p><p>Message: ${message}</p>`
+            "message_html": `<p>Phone: ${phone.val()}</p><p>Email: ${email.val()}</p><p>Message: ${message.val()}</p>`
         };
 
         var service_id = "nhokkuteo1996_gmail_com";
@@ -52,12 +52,18 @@ $(document).ready(function () {
 
         var check_input = $("#form-main .check");
 
-        if (check_input.val() === '') {
-            check_input.addClass('input-error');
-        } else if (check_input.val() !== '') {
-            var email_validate = $('input[type="email"]').val();
-            if (!validateEmail(email_validate)) {
-                $('input[type="email"]').addClass('input-error');
+        if (!first_name.val()) {
+            first_name.addClass('input-error');
+        }
+        if (!phone.val()) {
+            phone.addClass('input-error')
+        }
+        if (!email.val()) {
+            email.addClass('input-error')
+        }
+        if (first_name.val() && phone.val() && email.val()) {
+            if (!validateEmail(email.val())) {
+                email.val().addClass('input-error');
             } else {
                 check_input.removeClass('input-error');
                 $('.send-infomation').html('Đang gửi...').attr('disabled', 'disabled');
