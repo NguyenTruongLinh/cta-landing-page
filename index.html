@@ -173,31 +173,31 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <form action="#" class="home-form" id="form-main">
+                <form action="#" class="home-form form-register" id="form-main" novalidate>
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>Họ</label>
-                            <input type="text">
+                            <input type="text" id="last_name" name="last_name">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Tên</label>
-                            <input class="check" type="text">
+                            <input class="check" type="text" id="first_name" name="first_name">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>Số điện thoại</label>
-                            <input class="check" type="text">
+                            <input class="check" type="text" id="phone" name="phone">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Email</label>
-                            <input class="check" type="email">
+                            <input class="check" type="email" id="email" name="email">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <label>Lời nhắn</label>
-                            <textarea type="text"></textarea>
+                            <textarea type="text" id="message" name="message"></textarea>
                         </div>
                     </div>
                     <div class="text-center">
@@ -311,6 +311,7 @@
 
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/typer.js?v=1"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
 <script type="text/javascript" src="js/main.js?v=1"></script>
 </body>
 </html>
