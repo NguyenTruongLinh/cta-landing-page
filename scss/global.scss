@@ -6,6 +6,8 @@
 // Color
 $primary: #3da6ab;
 $white: #ffffff;
+$greyish: #f5f8fa;
+$dark_gray: #33475b;
 
 body{
   font-family: 'Josefin', sans-serif;
@@ -120,3 +122,86 @@ img{
     border: 1px solid $primary;
   }
 }
+
+/*Start Header*/
+header{
+  height: 82px;
+
+  .logo-cta{
+    display: inline-block;
+    position: relative;
+    color: $white;
+    padding-top: 15px;
+  }
+
+  @media (max-width: 767px) {
+    .logo-cta{
+      font-size: 1.3rem;
+      line-height: 1.7;
+    }
+  }
+
+  @media (max-width: 374px) {
+    .logo-cta{
+      font-size: 1rem;
+      line-height: 2.2;
+    }
+
+    a.btn{
+      font-size: 14px;
+    }
+  }
+}
+
+.stickyTrigger {
+  display: block;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  transform: translateY(-100%);
+  transition: opacity .5s ease-in-out,transform .5s ease-in-out;
+  z-index: 800;
+  margin-top: 82px;
+  background: transparent;
+  line-height: 82px;
+}
+
+.is-stick {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  visibility: visible;
+  transform: translateY(0);
+  margin-top: 0 !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,.1);
+  background: $white;
+
+  .logo-cta{
+    color: $primary;
+  }
+}
+/*End Header*/
+
+/*Start Footer*/
+.footer{
+  background-color: $dark_gray;
+  color: $white;
+  padding: 4rem 0 0;
+
+  .footer__contact-links{
+    padding-bottom: 3rem;
+
+    p {
+      a{
+        color: $white;
+      }
+    }
+  }
+
+  .copyright{
+    padding: 1.6rem 0;
+    border-top: 1px solid #7c98b6;
+  }
+}
+/*End Footer*/
