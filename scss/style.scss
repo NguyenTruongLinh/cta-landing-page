@@ -347,6 +347,15 @@ $dark_gray: #33475b;
   }
 }
 
+@media (max-width: 767px) {
+  .popup-success{
+    .popup-wrapper{
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
 .input-error{
   border: 1px solid red !important;
 }

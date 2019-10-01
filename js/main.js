@@ -8,15 +8,13 @@ $(document).ready(function () {
 
     $('.close-popup, .overlay, #close-popup').click(function (e) {
         e.preventDefault();
-        $('.popup').fadeOut(350);
-        $('.popup .popup-wrapper').removeClass('animationOpen').addClass('animationClose');
-        $('body').css('overflow', 'auto');
-        $('.send-infomation').removeAttr('disabled').html('Gửi thông tin');
+        closePopup();
+        $('.send-infomation, .popup-send-mail').removeAttr('disabled').html('Gửi thông tin');
         $('.form-register')[0].reset();
+        $('.popup-register')[0].reset();
     });
 
     // Send Email
-
     $('.check').blur(function(){
         if(!$(this).val()){
             $(this).addClass("input-error");
@@ -40,43 +38,24 @@ $(document).ready(function () {
         var phone = $('#phone');
         var email = $('#email');
         var message = $('#message');
+        var btn_send = $('.send-infomation');
 
-        var template_params = {
-            "from_name": `${last_name.val()} ${first_name.val()}`,
-            "to_name": "Linh",
-            "message_html": `<p>Phone: ${phone.val()}</p><p>Email: ${email.val()}</p><p>Message: ${message.val()}</p>`
-        };
-
-        var service_id = "nhokkuteo1996_gmail_com";
-        var template_id = "template_8ZRfOlaD";
-
-        var check_input = $("#form-main .check");
-
-        if (!first_name.val()) {
-            first_name.addClass('input-error');
-        }
-        if (!phone.val()) {
-            phone.addClass('input-error')
-        }
-        if (!email.val()) {
-            email.addClass('input-error')
-        }
-        if (first_name.val() && phone.val() && email.val()) {
-            if (!validateEmail(email.val())) {
-                email.val().addClass('input-error');
-            } else {
-                check_input.removeClass('input-error');
-                $('.send-infomation').html('Đang gửi...').attr('disabled', 'disabled');
-                emailjs.send(service_id, template_id, template_params)
-                    .then(function(response) {
-                        showPopupSuccess();
-                    }, function(error) {
-                        alert('Gửi thông tin thất bại. Vui lòng thử lại sau.')
-                    });
-            }
-        }
+        sendMail(first_name, last_name, phone, email, message, btn_send);
     });
 
+    $('#form-popup').on('submit', function(event) {
+        event.preventDefault(); // prevent reload
+
+        var first_name = $('#popup-first_name');
+        var phone = $('#popup-phone');
+        var email = $('#popup-email');
+        var message = $('#popup-message');
+        var btn_send = $('.popup-send-mail');
+        var last_name = $('#popup-last_name');
+        var popup = $('.popup-form-register');
+
+        sendMail(first_name, last_name, phone, email, message, btn_send, popup);
+    });
     // End Send Email
 });
 
@@ -108,4 +87,54 @@ function showPopupSuccess() {
     $('.popup-success').fadeIn(50).find("input").first().focus();
     $('.popup-success .popup-wrapper').removeClass('animationClose').addClass('animationOpen');
     $('body').css('overflow', 'hidden');
+}
+
+function closePopup() {
+    $('.popup').fadeOut(350);
+    $('.popup .popup-wrapper').removeClass('animationOpen').addClass('animationClose');
+    $('body').css('overflow', 'auto');
+}
+
+function sendMail(firstName, lastName, phone, email, message, btnSendMail, popup = null) {
+    var template_params = {
+        "from_name": `${lastName.val()} ${firstName.val()}`,
+        "to_name": "Linh",
+        "message_html": `<p>Phone: ${phone.val()}</p><p>Email: ${email.val()}</p><p>Message: ${message.val()}</p>`
+    };
+
+    var service_id = "nhokkuteo1996_gmail_com";
+    var template_id = "template_8ZRfOlaD";
+
+    if (!firstName.val()) {
+        firstName.addClass('input-error');
+    } else {
+        firstName.removeClass('input-error');
+    }
+    if (!phone.val()) {
+        phone.addClass('input-error')
+    } else {
+        phone.removeClass('input-error');
+    }
+    if (!email.val()) {
+        email.addClass('input-error')
+    } else {
+        email.removeClass('input-error');
+    }
+    if (firstName.val() && phone.val() && email.val()) {
+        if (!validateEmail(email.val())) {
+            email.addClass('input-error');
+        } else {
+            email.removeClass('input-error');
+            btnSendMail.html('Đang gửi...').attr('disabled', 'disabled');
+            emailjs.send(service_id, template_id, template_params)
+                .then(function(response) {
+                    if (popup !== null) {
+                        closePopup()
+                    }
+                    showPopupSuccess();
+                }, function(error) {
+                    alert('Gửi thông tin thất bại. Vui lòng thử lại sau.')
+                });
+        }
+    }
 }
