@@ -218,33 +218,34 @@
             <div class="form-header text-center">
                 <h3>Đăng ký liên hệ</h3>
             </div>
-            <form action="#" class="">
+            <form action="#" class="popup-register" id="form-popup">
                 <div class="row">
                     <div class="col-md-12 form-group">
                         <label>Họ tên</label>
-                        <input type="text">
+                        <input type="text" id="popup-first_name" name="popup-first_name">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 form-group">
                         <label>Số điện thoại</label>
-                        <input type="text">
+                        <input type="text" id="popup-phone" name="popup-phone">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 form-group">
                         <label>Email</label>
-                        <input type="text">
+                        <input type="text" id="popup-email" name="popup-email">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 form-group">
                         <label>Lời nhắn</label>
-                        <textarea type="text"></textarea>
+                        <textarea type="text" id="popup-message" name="popup-message"></textarea>
                     </div>
                 </div>
+                <input type="hidden" id="popup-last_name" name="popup-last_name">
                 <div class="text-center">
-                    <button class="btn cta-btn-primary btn-lg-width">Gửi thông tin</button>
+                    <button class="btn cta-btn-primary btn-lg-width popup-send-mail">Gửi thông tin</button>
                 </div>
             </form>
         </div>
