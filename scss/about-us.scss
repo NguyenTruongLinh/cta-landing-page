@@ -54,6 +54,8 @@ header {
 /*Our Client*/
 .our-client {
   .home-community-board {
+
+
     .community-board_body-image {
       img {
 
@@ -62,6 +64,53 @@ header {
 
       #logo-katie {
         background-color: #113132;
+      }
+    }
+  }
+}
+
+/*Our Leader*/
+.our-leader {
+  .home-community-board {
+    background-image: linear-gradient(191deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    color: $white;
+    padding-top: 20px;
+    padding-bottom: 40px;
+
+    .community-board_body {
+      .community-board_body-card {
+        width: 25%;
+      }
+    }
+
+    .community-board_body-image {
+      img {
+        margin-top: 20px;
+        border-radius: 50%;
+        width: 80%;
+      }
+    }
+
+    @media (max-width: 767px) {
+      padding: 0;
+      .community-board_body {
+
+        .community-board_body-card {
+          height: 50%;
+          margin: 0 auto;
+          width: 100%;
+
+        }
+
+        .community-board_body-image {
+          img {
+            width: 60%;
+          }
+        }
+
+        .community-board_body-text {
+          height: 100%;
+        }
       }
     }
   }
@@ -196,7 +245,7 @@ header {
 .client-say {
   .home-community-board {
     background-color: #ECF1F5;
-
+    padding: 40px;
   }
 
   .community-board_head {
@@ -220,9 +269,12 @@ header {
       font-style: italic;
       font-size: 14px;
       color: #0e1832;
+      line-height: 22px;
+
     }
 
     h4 {
+
       font-size: 20px;
       color: #486883;
       font-weight: 700;
@@ -236,13 +288,11 @@ header {
   max-width: 960px;
   padding: 0 2rem;
   margin: 0 auto;
-
   display: flex;
   justify-content: space-between;
 
   .products-feature__card {
     background-color: $white;
-
     width: 31%;
     -webkit-box-pack: start;
     justify-content: flex-start;
@@ -298,6 +348,10 @@ header {
     margin: 0 auto;
     text-align: center;
     padding-bottom: 10px;
+    h2{
+      margin-top: 50px;
+      font-weight: 400;
+    }
 
   }
 
